@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private NewsAdapter newsAdapter;
     private Prefs prefes;
     private News news;
-    private List<News> list = App.getDataBase().newsDao().getAll();
+    private List<News> list;
 
     public void News(News news) {
         this.news = news;
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         newsAdapter = new NewsAdapter();
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         prefes = new Prefs(this);
         if (!prefes.isBoardShown()) {
@@ -83,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
     @Override

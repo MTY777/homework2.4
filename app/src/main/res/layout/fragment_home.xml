@@ -8,10 +8,12 @@
     tools:context=".ui.home.HomeFragment">
 
     <EditText
-        android:id="@+id/edit_text_recycle"
+        android:id="@+id/search_view_recycle"
         android:layout_width="match_parent"
         android:inputType="text"
         android:hint="Search:"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_recycle"
+        app:layout_constraintTop_toBottomOf="@id/search_view_recycle"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_news" />
 

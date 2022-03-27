@@ -57,9 +57,10 @@ public class NewsFragment extends Fragment {
         }else {
             news.setTitle(text);
         }
-        App.getDataBase().newsDao().insert(news);
         bundle.putSerializable("news", news);
         getParentFragmentManager().setFragmentResult("rk_news", bundle);
+        App.getDataBase().newsDao().insert(news);
+
         close();
     }
 

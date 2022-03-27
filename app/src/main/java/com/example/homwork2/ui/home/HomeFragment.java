@@ -2,6 +2,7 @@ package com.example.homwork2.ui.home;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.NavController;
@@ -25,10 +27,24 @@ import com.example.homwork2.R;
 import com.example.homwork2.databinding.FragmentHomeBinding;
 import com.example.homwork2.models.News;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private NewsAdapter adapter;
+    private List<News> list;
+
+    public HomeFragment() {
+
+    }
+
+    public HomeFragment(List<News> list) {
+        this.list = list;
+    }
+
     private boolean isChanged = false;
     private int position;
     private News news;
@@ -38,11 +54,32 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         adapter = new NewsAdapter();
-        adapter.addList(App.getDataBase().newsDao().getAll());
     }
 
-    private void searchView() {
-        binding.editTextRecycle.addTextChangedListener(new TextWatcher() {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+
+    }
+
+
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isChanged = false;
+                open(null);
+            }
+        });
+        binding.searchViewRecycle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -54,43 +91,30 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-                adapter.setList(App.getDataBase().newsDao().getItemTitle(editable.toString()));
+            public void afterTextChanged(Editable s) {
+                list = App.getDataBase().newsDao().getSearch(s.toString());
+                adapter.addList(list);
             }
         });
-    }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-    }
+        binding.recycleView.setAdapter(adapter);
+        list = App.getDataBase().newsDao().sortAll();
+        adapter.addList(list);
 
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isChanged = false;
-                open(null);
-            }
-        });
+
+
         getParentFragmentManager().setFragmentResultListener("rk_news", getViewLifecycleOwner(), new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 News news = (News) result.getSerializable("news");
-                Log.e("Home", "text = " + news.getTitle());
-                if (isChanged){
+    /*            if (isChanged) {
                     adapter.updateItem(news, position);
-                }else{
+                } else {
                     adapter.addItem(news);
-                }
+                }*/
             }
         });
-        binding.recycleView.setAdapter(adapter);
         adapter.setOnClickListener(new OnClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -117,7 +141,6 @@ public class HomeFragment extends Fragment {
                         }).show();
             }
         });
-        searchView();
     }
 
     private void open(News news) {
@@ -131,17 +154,9 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.sorting) {
             adapter.setList(App.getDataBase().newsDao().sort());
-
             binding.recycleView.setAdapter(adapter);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-    //    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        inflater.inflate(R.menu.activity_menu, menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
 }

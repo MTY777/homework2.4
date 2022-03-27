@@ -16,18 +16,18 @@ public interface NewsDao {
     @Query("SELECT * FROM news")
     List<News> getAll();
 
-    @Query("SELECT * FROM news WHERE title = :s")
-    List<News> getItemTitle(String s);
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(News news);
 
-    @Query("SELECT * FROM news order by title desc")
+   @Query("SELECT * FROM news ORDER BY createdAt DESC")
     List<News> sortAll();
 
     @Delete
     void deleteTask(News news);
 
-    @Query("SELECT * FROM news order by title Desc")
+    @Query("SELECT * FROM news WHERE title LIKE '%' || :search || '%'")
+    List<News> getSearch(String search);
+
+    @Query("SELECT * FROM news ORDER BY title ASC")
     List<News> sort();
 }

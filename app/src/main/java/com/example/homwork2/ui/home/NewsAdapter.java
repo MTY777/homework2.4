@@ -2,11 +2,13 @@ package com.example.homwork2.ui.home;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homwork2.Interfaces.OnClickListener;
@@ -15,8 +17,10 @@ import com.example.homwork2.models.News;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
 
 @SuppressLint("NotifyDataSetChanged")
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
@@ -30,7 +34,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @NonNull
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NewsViewHolder(ItemNewsBinding.inflate(LayoutInflater.from(parent.getContext()), parent , false));
+        return new NewsViewHolder(ItemNewsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     public void setList(List<News> list) {
@@ -40,12 +44,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-    holder.bind(list.get(position));
-    if (position % 2 == 0){
-        holder.binding.title.setBackgroundColor(Color.GRAY);
-    }else{
-        holder.binding.title.setBackgroundColor(Color.BLACK);
-    }
+        holder.bind(list.get(position));
+        if (position % 2 == 0) {
+            holder.binding.getRoot().setBackgroundColor(Color.GRAY);
+        } else {
+            holder.binding.getRoot().setBackgroundColor(Color.BLACK);
+        }
     }
 
     @Override
@@ -53,9 +57,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return list.size();
     }
 
+
     public void addItem(News news) {
         list.add(0, news);
-        notifyItemInserted(list.indexOf(news));
+        notifyItemInserted(0);
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {
@@ -69,13 +74,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     public void updateItem(News news, int position) {
         list.set(position, news);
-        notifyItemChanged(position);
+        notifyItemChanged(position, news);
     }
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void addList(List<News> list) {
-        this.list.addAll(list);
+        this.list=list;
         notifyDataSetChanged();
+
+
     }
+
     public void removeItem(int position) {
         this.list.remove(position);
         notifyItemRemoved(position);
@@ -114,5 +125,5 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         }
     }
 
-    }
+}
 
