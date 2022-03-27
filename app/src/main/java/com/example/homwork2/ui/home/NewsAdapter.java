@@ -17,6 +17,8 @@ import com.example.homwork2.models.News;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -81,7 +83,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void addList(List<News> list) {
+        Comparator<News> comparator = Comparator.comparing(new Function<News, Long>() {
+            @Override
+            public Long apply(News news) {
+                return news.getCreatedAt();
+            }
+        });
         this.list=list;
+        this.list.sort(comparator);
+        Collections.reverse(this.list);
         notifyDataSetChanged();
 
 
