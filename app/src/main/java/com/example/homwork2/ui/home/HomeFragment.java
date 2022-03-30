@@ -41,10 +41,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public HomeFragment(List<News> list) {
-        this.list = list;
-    }
-
     private boolean isChanged = false;
     private int position;
     private News news;

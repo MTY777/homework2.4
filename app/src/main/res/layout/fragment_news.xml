@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/white"
@@ -14,11 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save"
-        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="save" />
+        style="@style/ButtonStyle"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="Save" />
+
 
 </LinearLayout>

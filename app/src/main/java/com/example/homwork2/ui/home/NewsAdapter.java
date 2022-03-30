@@ -74,11 +74,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
 
-    public void updateItem(News news, int position) {
+/*    public void updateItem(News news, int position) {
         list.set(position, news);
         notifyItemChanged(position, news);
-    }
-
+    }*/
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)

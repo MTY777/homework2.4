@@ -13,9 +13,6 @@ import java.util.List;
 @Dao
 public interface NewsDao {
 
-    @Query("SELECT * FROM news")
-    List<News> getAll();
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(News news);
 

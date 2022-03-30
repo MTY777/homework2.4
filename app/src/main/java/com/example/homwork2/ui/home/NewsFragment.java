@@ -11,6 +11,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.example.homwork2.App;
@@ -49,6 +51,11 @@ public class NewsFragment extends Fragment {
         Bundle bundle = new Bundle();
         String text = binding.EditText.getText().toString().trim();
         if (text.isEmpty()) {
+            boolean invalid = true;
+            if (invalid) {
+                Animation snake = AnimationUtils.loadAnimation(requireContext(), R.anim.snake);
+                binding.EditText.startAnimation(snake);
+            }
             Toast.makeText(requireContext(), "type task!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -60,7 +67,6 @@ public class NewsFragment extends Fragment {
         bundle.putSerializable("news", news);
         getParentFragmentManager().setFragmentResult("rk_news", bundle);
         App.getDataBase().newsDao().insert(news);
-
         close();
     }
 

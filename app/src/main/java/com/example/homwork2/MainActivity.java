@@ -60,13 +60,7 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                if (navDestination.getId() == R.id.boardFragment) {
-                    binding.navView.setVisibility(View.GONE);
-                    getSupportActionBar().hide();
-                } else {
-                    binding.navView.setVisibility(View.VISIBLE);
-                    getSupportActionBar().show();
-                }
+
             }
         });
     }

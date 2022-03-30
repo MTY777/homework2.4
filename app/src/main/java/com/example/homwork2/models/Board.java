@@ -30,9 +30,8 @@ public class Board {
         this.image = image;
     }
 
-    public Board(String title, String desc, int image) {
+    public Board(String title, String desc) {
         this.title = title;
         this.desc = desc;
-        this.image = image;
     }
 }

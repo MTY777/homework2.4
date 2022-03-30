@@ -13,15 +13,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.bumptech.glide.Glide;
 import com.example.homwork2.Prefs;
+import com.example.homwork2.R;
 import com.example.homwork2.databinding.FragmentProfileBinding;
+
+import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment {
     private Prefs prefes;
     private FragmentProfileBinding binding;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +41,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         prefes = new Prefs(requireContext());
+        String text = binding.editext.getText().toString().trim();
 
         binding.image.setOnClickListener(new View.OnClickListener() {
             @Override

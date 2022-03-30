@@ -15,12 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.homwork2.Prefs;
 import com.example.homwork2.R;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 public class BoardFragment extends Fragment implements BoardAdapter.FinishBoard {
     private TextView textskip;
+    private LottieAnimationView lottie;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,10 +53,12 @@ public class BoardFragment extends Fragment implements BoardAdapter.FinishBoard 
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                if (position == 2){
+                if (position == 1){
+                    textskip.setVisibility(View.GONE);
+                }else if (position == 2) {
                     textskip.setVisibility(View.GONE);
                 }else {
-                    textskip.setVisibility(View.VISIBLE);
+                    textskip.setVisibility(View.INVISIBLE);
                 }
             }
         });

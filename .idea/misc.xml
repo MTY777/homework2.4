@@ -4,9 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_first1.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_home.xml" value="0.12635869565217392" />
         <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_news.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_notifications.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_one.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/item_news.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/layout/pager_board.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/menu/activity_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/menu/main_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/matay/Desktop/homwork2/app/src/main/res/xml/anim.xml" value="0.2" />
       </map>
     </option>
   </component>
