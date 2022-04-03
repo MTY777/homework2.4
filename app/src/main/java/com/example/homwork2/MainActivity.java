@@ -20,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.homwork2.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -50,12 +51,16 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+//        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+//        navController.navigate(R.id.loginFragment);
+
         prefes = new Prefs(this);
-        if (!prefes.isBoardShown()) {
+        if (!prefes.isBoardShown())
             navController.navigate(R.id.boardFragment);
 
 
-        }
+
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override

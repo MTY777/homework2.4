@@ -8,6 +8,10 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 @Entity
 public class News implements Serializable {
+
+    public News() {
+    }
+
     public void setId(int id) {
         this.id = id;
     }

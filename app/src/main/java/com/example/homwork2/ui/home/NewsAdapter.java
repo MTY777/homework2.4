@@ -108,22 +108,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public NewsViewHolder(@NonNull ItemNewsBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
-            binding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onClickListener.onItemClick(getAdapterPosition());
-
-
-                }
-            });
-            binding.getRoot().setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    onClickListener.onItemLongClick(getAdapterPosition());
-
-                    return true;
-                }
-            });
         }
 
         public void bind(News news) {
@@ -131,6 +115,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss, dd MMM yyyy", Locale.ROOT);
             String date = String.valueOf(simpleDateFormat.format(news.getCreatedAt()));
             binding.tvTime.setText(date);
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    onClickListener.onItemClick(getAdapterPosition());
+//                }
+//            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    onClickListener.onItemLongClick(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 

@@ -37,4 +37,10 @@
         android:name="com.example.homwork2.ui.board.BoardFragment"
         android:label="fragment_board"
         tools:layout="@layout/fragment_board" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.homwork2.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

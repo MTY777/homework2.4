@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private NewsAdapter adapter;
-    private List<News> list;
+    private List<News>  list;
 
     public HomeFragment() {
 
