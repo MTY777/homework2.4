@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment">
-
     <EditText
+
         android:id="@+id/search_view_recycle"
         android:layout_width="match_parent"
         android:inputType="text"

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(R.id.boardFragment);
 
 
-
+        
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override

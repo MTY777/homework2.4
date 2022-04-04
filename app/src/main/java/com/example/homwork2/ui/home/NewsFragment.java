@@ -83,7 +83,6 @@ public class NewsFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                        close();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -92,6 +91,7 @@ public class NewsFragment extends Fragment {
                         Log.w("TAG", "Error adding document", e);
                     }
                 });
+        close();
 
     }
 

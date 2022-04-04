@@ -101,6 +101,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         notifyItemRemoved(position);
     }
 
+    public void updateItem(News news, int position) {
+        list.set(position, news);
+        notifyItemChanged(position);
+    }
+
+
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
         ItemNewsBinding binding;

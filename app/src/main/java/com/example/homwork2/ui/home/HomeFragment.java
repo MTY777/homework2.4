@@ -104,8 +104,9 @@ public class HomeFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("rk_news", getViewLifecycleOwner(), new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+/*
                 News news = (News) result.getSerializable("news");
-    /*            if (isChanged) {
+               if (isChanged) {
                     adapter.updateItem(news, position);
                 } else {
                     adapter.addItem(news);

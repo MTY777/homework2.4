@@ -33,7 +33,6 @@ public class DashboardFragment extends Fragment  {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -42,6 +41,8 @@ public class DashboardFragment extends Fragment  {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getToFireStore(news);
+
+
     }
 
 
@@ -52,6 +53,7 @@ public class DashboardFragment extends Fragment  {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            binding.loadingPanel.setVisibility(View.GONE);
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
                                 News newss = document.toObject(News.class);
