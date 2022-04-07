@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-//        if (FirebaseAuth.getInstance().getCurrentUser() == null)
-//        navController.navigate(R.id.loginFragment);
+       if (FirebaseAuth.getInstance().getCurrentUser() == null)
+           navController.navigate(R.id.loginFragment);
 
         prefes = new Prefs(this);
         if (!prefes.isBoardShown())
             navController.navigate(R.id.boardFragment);
 
 
-        
+
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
